@@ -1,1 +1,2 @@
-(veya IlanService): Ürün (ilan) ekleme (addProduct), ürünleri listeleme (getAllProducts, getProductsByCategory), ürün detaylarını getirme (getProductById), ürün güncelleme (updateProduct), ürün silme (deleteProduct), stok kontrolü
+Sipariş oluşturma (createOrder), siparişleri getirme (getUserOrders, getAllOrders), sipariş detaylarını getirme (getOrderById),
+sipariş durumu güncelleme (updateOrderStatus), sipariş iptali (cancelOrder).
