@@ -1,1 +1,1 @@
-
+(veya IlanService): Ürün (ilan) ekleme (addProduct), ürünleri listeleme (getAllProducts, getProductsByCategory), ürün detaylarını getirme (getProductById), ürün güncelleme (updateProduct), ürün silme (deleteProduct), stok kontrolü
