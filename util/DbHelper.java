@@ -24,3 +24,11 @@ public class DbHelper {
         }
 	}
 }
+/*
+public class DbHelper {
+    // Veritabanı bağlantı bilgileri
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "12345";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/oyun_e_ticaret";
+    ****Yasin----"Bende 3306 ve datanın ismi oyun-e-ticaret şifre ve user aynı halen"***
+*/
