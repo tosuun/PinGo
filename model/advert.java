@@ -1,10 +1,8 @@
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class advert {
 
-
-	public class Ilan {
+	public class Advert {
 	    private int idAdvert;
 	    private String product;
 	    private String seller;
@@ -15,7 +13,7 @@ public class advert {
 	    private String imageUrl;
 
 	    // parameterized constructor
-	    public Ilan(int idAdvert, String product, String seller, BigDecimal price, int stok, boolean isActive, Date createdAt, String imageUrl) {
+	    public Advert(int idAdvert, String product, String seller, BigDecimal price, int stok, boolean isActive, Date createdAt, String imageUrl) {
 	        this.idAdvert = idAdvert;
 	        this.product = product;
 	        this.seller = seller;
@@ -106,5 +104,3 @@ public class advert {
 	                '}';
 	    }
 	}
-
-}
