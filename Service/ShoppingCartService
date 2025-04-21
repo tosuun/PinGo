@@ -1,1 +1,1 @@
-
+ShoppingCartService: Sepete ürün ekleme (addItem), sepetten ürün çıkarma (removeItem), sepet içeriğini getirme (getCartItems), sepeti temizleme (
