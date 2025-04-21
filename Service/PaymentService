@@ -1,3 +1,1 @@
-
-Sipariş oluşturma (createOrder), siparişleri getirme (getUserOrders, getAllOrders), sipariş detaylarını getirme
-(getOrderById), sipariş durumu güncelleme (updateOrderStatus), sipariş iptali (cancelOrder).
+ Ödeme işlemini başlatma (initiatePayment), ödeme sonucunu işleme (processPaymentResult).
