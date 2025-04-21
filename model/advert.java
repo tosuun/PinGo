@@ -25,11 +25,11 @@ import java.util.Date;
 	    }
 
 	    // Getter and Setter methods
-	    public int getId() {
+	    public int getIdAdvert() {
 	        return idAdvert;
 	    }
 
-	    public void setId(int idAdvert) {
+	    public void setIdAdvert(int idAdvert) {
 	        this.idAdvert = idAdvert;
 	    }
 
@@ -104,3 +104,4 @@ import java.util.Date;
 	                '}';
 	    }
 	}
+
