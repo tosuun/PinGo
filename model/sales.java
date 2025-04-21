@@ -81,8 +81,7 @@ public class Sales {
 	}
 
 	// Tüm alanları içeren constructor 
-    public Sales(int idSales, int idSeller, int idCustomer, int idProduct, int orderId, int quantity, BigDecimal priceAtSale, LocalDateTime saleTimestamp) {
-        this.idSales = idSales;
+    public Sales(int idSeller, int idCustomer, int idProduct, int orderId, int quantity, BigDecimal priceAtSale, LocalDateTime saleTimestamp) {
         this.idSeller = idSeller;
         this.idCustomer = idCustomer;
         this.idProduct = idProduct;
