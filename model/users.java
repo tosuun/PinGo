@@ -13,7 +13,9 @@ public class users {
     private String tc;
     private double ciro;
 
-    public users() {}
+  public Users() {
+    this.role = "buyer"; // varsayılan rol
+}
 
     // Constructor
     public users(int id, String name, String email, String password, String role,
