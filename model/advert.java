@@ -14,9 +14,9 @@ import java.util.Date;
 	    private boolean isActive;
 	    private Date createdAt;
 	    private String imageUrl;
-	    // parameterless constructor
-	    public Advert () {
-	    	
+	    
+		// parameterless constructor
+	    public Advert () { 	
 	    }
 	    
 	    // parameterized constructor
