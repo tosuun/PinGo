@@ -1,5 +1,8 @@
+package advertDB;
+
 import java.math.BigDecimal;
 import java.util.Date;
+
 
 
 	public class Advert {
@@ -7,18 +10,22 @@ import java.util.Date;
 	    private String product;
 	    private String seller;
 	    private BigDecimal price;
-	    private int stok;
+	    private int stock;
 	    private boolean isActive;
 	    private Date createdAt;
 	    private String imageUrl;
-
+	    // parameterless constructor
+	    public Advert () {
+	    	
+	    }
+	    
 	    // parameterized constructor
-	    public Advert(int idAdvert, String product, String seller, BigDecimal price, int stok, boolean isActive, Date createdAt, String imageUrl) {
+	    public Advert(int idAdvert, String product, String seller, BigDecimal price, int stock, boolean isActive, Date createdAt, String imageUrl) {
 	        this.idAdvert = idAdvert;
 	        this.product = product;
 	        this.seller = seller;
 	        this.price = price;
-	        this.stok = stok;
+	        this.stock = stock;
 	        this.isActive = isActive;
 	        this.createdAt = createdAt;
 	        this.imageUrl = imageUrl;
@@ -57,12 +64,12 @@ import java.util.Date;
 	        this.price = price;
 	    }
 
-	    public int getStok() {
-	        return stok;
+	    public int getStock() {
+	        return stock;
 	    }
 
-	    public void setStok(int stok) {
-	        this.stok = stok;
+	    public void setStock(int stock) {
+	        this.stock = stock;
 	    }
 
 	    public boolean isActive() {
@@ -97,11 +104,13 @@ import java.util.Date;
 	                ", product='" + product + '\'' +
 	                ", seller='" + seller + '\'' +
 	                ", price=" + price +
-	                ", stok=" + stok +
+	                ", stock=" + stock +
 	                ", isActive=" + isActive +
 	                ", createdAt=" + createdAt +
 	                ", imageUrl='" + imageUrl + '\'' +
 	                '}';
 	    }
 	}
+
+
 
