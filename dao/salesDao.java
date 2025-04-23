@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 import DAO.DbHelper;
 
 public class SalesDao {
@@ -66,4 +69,34 @@ public class SalesDao {
 		}
 		return sale;
 	}
+	public List<Sales> findByOrderId(int orderId) {
+        List<Sales> salesList = new ArrayList<>();
+       
+        String sql = "SELECT idSales, idSeller, idCustomer, idProduct, orderId, quantity, priceAtSale, saleTimestamp FROM sales WHERE orderId = ?";
+
+        try (Connection connection = DbHelper.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setInt(1, orderId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Sales sale = new Sales();
+                    sale.setIdSales(rs.getInt("idSales"));
+                    sale.setIdSeller(rs.getInt("idSeller"));
+                    sale.setIdCustomer(rs.getInt("idCustomer"));
+                    sale.setIdProduct(rs.getInt("idProduct"));
+                    sale.setOrderId(rs.getInt("orderId"));
+                    sale.setQuantity(rs.getInt("quantity"));
+                    sale.setPriceAtSale(rs.getBigDecimal("priceAtSale"));
+                    sale.setSaleTimestamp(rs.getTimestamp("saleTimestamp").toLocalDateTime());
+                    salesList.add(sale);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Order ID ile satış arama sırasında hata: " + e.getMessage());
+            e.printStackTrace(); 
+        }
+        return salesList;
+    }
  }
