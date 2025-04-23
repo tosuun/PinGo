@@ -1,1 +1,41 @@
-SalesService: Satış kaydı oluşturma (recordSale), satış raporları oluşturma (generateSalesReport).
+import java.util.ArrayList;
+import java.util.List;
+
+import DAO.SalesDao;
+import model.Sales;
+
+public class SalesService {
+	private SalesDao salesDao;
+	public SalesService() {
+		this.salesDao = new SalesDao();
+	}
+	public List<Sales> getSalesForOrder(int orderId) {
+		try {
+			return salesDao.findByOrderId(orderId);
+		} catch (Exception e) {
+			System.err.println("Order ID " + orderId + " için satışlar getirilirken hata: " + e.getMessage());
+			e.printStackTrace(); 
+            return new ArrayList<>();
+		}
+	}
+	public Sales getSalesDetails(int idSales) {
+		try {
+			return salesDao.findById(idSales);
+		} catch (Exception e) {
+			System.err.println("Sales ID " + idSales + " için detaylar getirilirken hata: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+		}
+	}
+	//Belirli bir müşterinin tüm geçmiş satış kalemlerini getirir.
+	public List<Sales> getSalesForCustomer(int customerId) {
+		try {
+			return salesDao.findByOrderId(customerId);
+		} catch (Exception e) {
+			 System.err.println("Customer ID " + customerId + " için satışlar getirilirken hata: " + e.getMessage());
+             e.printStackTrace();
+             return new ArrayList<>();
+		}
+	}
+
+}
