@@ -1,2 +1,32 @@
  (veya IlanService): Ürün (ilan) ekleme (addProduct), ürünleri listeleme (getAllProducts, getProductsByCategory), 
 ürün detaylarını getirme (getProductById), ürün güncelleme (updateProduct), ürün silme (deleteProduct
+
+
+package advertDB;
+import java.util.List;
+
+
+public class advertService {
+
+	private AdvertDAO advertDAO = new AdvertDAO();
+	// Eklemek için.
+    public void addProduct(Advert advert) {
+        advertDAO.save(advert);
+    }
+    // Listelemek için.
+    public List<Advert> getAllProducts() {
+        return advertDAO.findAll();
+    }
+    
+    public Advert findById(int id) {
+        return advertDAO.findById(id);
+    }
+
+    public void updateProduct(Advert advert) {
+        advertDAO.update(advert);
+    }
+
+    public void deleteProduct(int id) {
+        advertDAO.delete(id);
+    }
+}
