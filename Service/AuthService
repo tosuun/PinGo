@@ -1,1 +1,54 @@
- Kullanıcı kaydı (register), kullanıcı girişi (login), kullanıcı yetkilendirme (authorize), şifre işlemleri (sıfırlama, güncelleme).
+ // Kullanıcı kaydı (register), kullanıcı girişi (login), kullanıcı yetkilendirme (authorize), şifre işlemleri (sıfırlama, güncelleme).
+
+package Javaödev;
+
+public class AuthService {
+    private final UserDAO userDAO = new UserDAO();
+
+    // Kullanıcı kaydı (register)
+    public boolean register(String username, String email, String password) {
+        if (userDAO.findByUsername(username) != null) {
+            System.out.println("Kullanıcı adı zaten alınmış.");
+            return false;
+        }
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setEmail(email);
+        newUser.setPassword(password); // Gerçek uygulamada hashle!
+        return userDAO.addUser(newUser);
+    }
+
+    // Giriş işlemi (login)
+    public User login(String username, String password) {
+        User user = userDAO.findByUsername(username);
+        if (user != null && user.getPassword().equals(password)) {
+            return user; // Giriş başarılı
+        }
+        return null; // Başarısız
+    }
+
+    // Yetkilendirme kontrolü (örneğin admin mi?)
+    public boolean authorize(User user, String requiredRole) {
+        return user != null && requiredRole.equalsIgnoreCase(user.getRole());
+    }
+
+    // Şifre sıfırlama (e-posta eşleşiyorsa yeni şifre atanır)
+    public boolean resetPassword(String email, String newPassword) {
+        User user = userDAO.findByEmail(email);
+        if (user != null) {
+            user.setPassword(newPassword);
+            return userDAO.updatePassword(user.getId(), newPassword);
+        }
+        return false;
+    }
+
+    // Mevcut kullanıcı şifresini güncelleme
+    public boolean updatePassword(int userId, String oldPassword, String newPassword) {
+        User user = userDAO.findById(userId);
+        if (user != null && user.getPassword().equals(oldPassword)) {
+            return userDAO.updatePassword(userId, newPassword);
+        }
+        return false;
+    }
+}
+
