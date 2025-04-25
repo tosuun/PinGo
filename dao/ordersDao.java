@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class OrderDAO {
+	
 
     public boolean addOrder(Order order) {
         // SQL sorgusu orders tablosundaki sütunlarla eşleşmeli
@@ -34,5 +35,41 @@ public class OrderDAO {
             return false; // Hata durumunda false dön
         }
     }
+
+public Order findOrderById(int orderId) {
+    String sql = "SELECT * FROM orders WHERE order_id = ?";
+
+    try (Connection conn = DbHelper.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, orderId);
+
+        // Sorguyu çalıştır ve sonucu al
+        var rs = stmt.executeQuery();
+
+        // Eğer sonuç varsa, Order nesnesi oluştur ve döndür
+        if (rs.next()) {
+            Order order = new Order();
+            order.setOrderId(rs.getInt("order_id"));
+            order.setProductId(rs.getInt("product_id"));
+            order.setCustomerId(rs.getInt("customer_id"));
+            order.setOrderDate(rs.getTimestamp("order_date").toLocalDateTime());
+            order.setTotalAmount(rs.getDouble("total_amount"));
+            order.setStatus(rs.getString("status"));
+
+            return order;
+        } else {
+            return null; // Kayıt bulunamadıysa null döner
+        }
+
+    } catch (SQLException e) {
+        System.err.println("SQL Hatası: Order bulunamadı!");
+        e.printStackTrace();
+        return null;
+    }
+}
+
+
+	
 }
 	
