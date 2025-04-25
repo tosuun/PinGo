@@ -30,6 +30,20 @@ public class users {
 	        this.tc = tc;
 	        this.ciro = ciro;
 	    }
+	 //buyer için ayrı bir constructor
+	    public users(int id, String name, String email, String password, String role,
+	             String telNo, String tc) {
+	    this.id = id;
+	    this.name = name;
+	    this.email = email;
+	    this.password = password;
+	    this.role = role;
+	    this.telNo = telNo;
+	    this.tc = tc;
+	    this.satisSayisi = 0;  // default
+	    this.ciro = 0.0;       // default 
+	}
+
 
 	    // Getter ve Setter'lar
 	    public int getId() {
