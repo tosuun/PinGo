@@ -1,2 +1,51 @@
-Sipariş oluşturma (createOrder), siparişleri getirme (getUserOrders, getAllOrders), sipariş detaylarını getirme (getOrderById),
-sipariş durumu güncelleme (updateOrderStatus), sipariş iptali (cancelOrder).
+//Sipariş oluşturma (createOrder), siparişleri getirme (getUserOrders, getAllOrders), sipariş detaylarını getirme (getOrderById),
+//sipariş durumu güncelleme (updateOrderStatus), sipariş iptali (cancelOrder).
+
+
+package Javaödev;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
+
+public class OrderService {
+    private final OrderDAO orderDAO = new OrderDAO();
+
+    // 1. Sipariş oluşturma
+    public boolean createOrder(int productId, int customerId, double totalAmount) {
+        Order order = new Order();
+        order.setProductId(productId);
+        order.setCustomerId(customerId);
+        order.setOrderDate(LocalDateTime.now());
+        order.setTotalAmount(totalAmount);
+        order.setStatus("Pending");
+        return orderDAO.addOrder(order);
+    }
+
+    // 2. Belirli bir kullanıcıya ait siparişleri getirme
+    public List<Order> getUserOrders(int customerId) {
+        // Bu fonksiyonu OrderDAO tarafında yazmalısın
+        return orderDAO.getOrdersByCustomerId(customerId);
+    }
+
+    // 3. Tüm siparişleri getirme
+    public List<Order> getAllOrders() {
+        // Bu fonksiyonu OrderDAO tarafında yazmalısın
+        return orderDAO.getAllOrders();
+    }
+
+    // 4. Sipariş ID ile detay getirme
+    public Order getOrderById(int orderId) {
+        return orderDAO.findOrderById(orderId);
+    }
+
+    // 5. Sipariş durumunu güncelleme
+    public boolean updateOrderStatus(int orderId, String newStatus) {
+        return orderDAO.updateOrderStatus(orderId, newStatus);
+    }
+
+    // 6. Siparişi iptal etme (durumu "Cancelled" yapar)
+    public boolean cancelOrder(int orderId) {
+        return orderDAO.updateOrderStatus(orderId, "Cancelled");
+    }
+}
