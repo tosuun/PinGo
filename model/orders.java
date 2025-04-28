@@ -1,84 +1,93 @@
 package model;
-import java.math.BigDecimal;
+
 import java.time.LocalDateTime;
 
 public class Order {
 
-    private int idOrder; // Bu ID genellikle DB tarafından atanır
-    private int idProduct;
-    private int idCustomer;
+    private int orderId; // Bu ID genellikle DB tarafından atanır
+    private int productId;
+    private int customerId;
     private LocalDateTime orderDate;
-    private BigDecimal totalAmount;
+    private double totalAmount;
     private String status;
-	public Order(int idProduct, int idCustomer, LocalDateTime orderDate, BigDecimal totalAmount,
+
+    
+    
+    
+    
+    public Order() {
+		
+	}
+
+	public Order( int productId, int customerId, LocalDateTime orderDate, double totalAmount,
 			String status) {
-		this.idProduct = idProduct;
-		this.idCustomer = idCustomer;
+		
+		this.productId = productId;
+		this.customerId = customerId;
 		this.orderDate = orderDate;
 		this.totalAmount = totalAmount;
 		this.status = status;
 	}
-    // --- Getters ve Setters ---
-    public int getIdOrder() {
-		return idOrder;
-	}
 
-	public void setIdOrder(int idOrder) {
-		this.idOrder = idOrder;
-	}
+	// --- Getters ve Setters ---
+    public int getOrderId() {
+        return orderId;
+    }
 
-	public int getIdProduct() {
-		return idProduct;
-	}
+	public void setOrderId(int orderId) {
+		  this.orderId = orderId;
+    }
 
-	public void setIdProduct(int idProduct) {
-		this.idProduct = idProduct;
-	}
+    public int getProductId() {
+        return productId;
+    }
 
-	public int getIdCustomer() {
-		return idCustomer;
-	}
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 
-	public void setIdCustomer(int idCustomer) {
-		this.idCustomer = idCustomer;
-	}
+    public int getCustomerId() {
+        return customerId;
+    }
 
-	public LocalDateTime getOrderDate() {
-		return orderDate;
-	}
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
-	public void setOrderDate(LocalDateTime orderDate) {
-		this.orderDate = orderDate;
-	}
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
 
-	public BigDecimal getTotalAmount() {
-		return totalAmount;
-	}
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
 
-	public void setTotalAmount(BigDecimal totalAmount) {
-		this.totalAmount = totalAmount;
-	}
+    public double getTotalAmount() {
+        return totalAmount;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     // İsteğe bağlı: toString() metodu eklemek hata ayıklamada yardımcı olabilir
     @Override
     public String toString() {
         return "Order{" +
-               "orderId=" + idOrder +
-               ", productId=" + idProduct +
-               ", customerId=" + idCustomer +
+               "orderId=" + orderId +
+               ", productId=" + productId +
+               ", customerId=" + customerId +
                ", orderDate=" + orderDate +
                ", totalAmount=" + totalAmount +
                ", status='" + status + '\'' +
                '}';
     }
-
-	
 }
