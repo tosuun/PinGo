@@ -1,10 +1,11 @@
 package model;
 
 import java.math.BigDecimal;
-
+import java.text.DecimalFormat;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
-public class Sales {
+public class Sale {
 	private int idSales;
 	private int idSeller;
 	private int idCustomer;
@@ -77,12 +78,12 @@ public class Sales {
 	public void setSaleTimestamp(LocalDateTime saleTimestamp) {
 		this.saleTimestamp = saleTimestamp;
 	}
-	public Sales() {
+	public Sale() {
 		
 	}
 
 	// Tüm alanları içeren constructor 
-    public Sales(int idSeller, int idCustomer, int idProduct, int orderId, int quantity, BigDecimal priceAtSale, LocalDateTime saleTimestamp) {
+    public Sale(int idSeller, int idCustomer, int idProduct, int orderId, int quantity, BigDecimal priceAtSale, LocalDateTime saleTimestamp) {
         this.idSeller = idSeller;
         this.idCustomer = idCustomer;
         this.idProduct = idProduct;
