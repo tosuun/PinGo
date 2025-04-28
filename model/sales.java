@@ -1,6 +1,7 @@
+package model;
+
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.time.DateTimeException;
+
 import java.time.LocalDateTime;
 
 public class Sales {
