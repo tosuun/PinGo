@@ -1,4 +1,6 @@
-import model.Sales;
+package dao;
+
+import model.Sale;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,12 +10,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.DbHelper;
+import util.DbHelper;
 
-public class SalesDao {
+public class SaleDao {
 	//For add new sales record
-	public int save(Sales sale) {
-		String sqlString = "INSERT INTO sales (idSeller, idCustomer, idProduct, orderId, quantity, priceAtSale, saleTimestamp) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	public int save(Sale sale) {
+		String sqlString = "INSERT INTO sale (idSeller, idCustomer, idProduct, orderId, quantity, priceAtSale, saleTimestamp) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		int generatedId = 0;
 		try(Connection connection = DbHelper.getConnection();
 			PreparedStatement ps = connection.prepareStatement(sqlString,Statement.RETURN_GENERATED_KEYS)) {
@@ -44,15 +46,15 @@ public class SalesDao {
 		return generatedId;
 	}
 	//Belirli bir ID'ye sahip satış kalemini bulma.
-	public Sales findById(int idSales) {
+	public Sale findById(int idSales) {
 		String sql = "SELECT idSales, idSeller, idCustomer, idProduct, orderId, quantity, priceAtSale, saleTimestamp FROM sales WHERE idSales = ?";
-		Sales sale = null;
+		Sale sale = null;
 		try(Connection connection = DbHelper.getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql)) {
 			ps.setInt(1, idSales);
 			try(ResultSet rs = ps.executeQuery()) {
 				if(rs.next()) {
-					sale = new Sales();
+					sale = new Sale();
 					sale.setIdSales(rs.getInt("idSales"));
                     sale.setIdSeller(rs.getInt("idSeller"));
                     sale.setIdCustomer(rs.getInt("idCustomer"));
@@ -69,8 +71,8 @@ public class SalesDao {
 		}
 		return sale;
 	}
-	public List<Sales> findByOrderId(int orderId) {
-        List<Sales> salesList = new ArrayList<>();
+	public List<Sale> findByOrderId(int orderId) {
+        List<Sale> salesList = new ArrayList<>();
        
         String sql = "SELECT idSales, idSeller, idCustomer, idProduct, orderId, quantity, priceAtSale, saleTimestamp FROM sales WHERE orderId = ?";
 
@@ -81,7 +83,7 @@ public class SalesDao {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    Sales sale = new Sales();
+                    Sale sale = new Sale();
                     sale.setIdSales(rs.getInt("idSales"));
                     sale.setIdSeller(rs.getInt("idSeller"));
                     sale.setIdCustomer(rs.getInt("idCustomer"));
