@@ -1,3 +1,5 @@
+package util;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -6,7 +8,7 @@ public class DbHelper {
 	// Veritabanı bağlantı bilgileri
 	private static final String  DB_USER = "root";
 	private static final String DB_PASSWORD = "12345";
-	private static final String DB_URL = "jdbc:mysql://localhost:3307/webdb";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/e_ticaret";
 	 /**
      * Veritabanına yeni bir bağlantı döndürür.
      * @throws SQLException Bağlantı hatası olursa
@@ -30,5 +32,5 @@ public class DbHelper {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "12345";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/oyun_e_ticaret";
-    ****Yasin----"Bende 3306 ve datanın ismi oyun-e-ticaret şifre ve user aynı halen"***
+    ****Yasin----"Bende 3306 ve datanın ismi e-ticaret şifre ve user aynı halen"***
 */
