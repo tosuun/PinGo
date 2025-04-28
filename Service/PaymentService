@@ -1,11 +1,13 @@
+package service;
+
 import java.math.BigDecimal;
 
-import DAO.OrderDAO;
+import dao.OrderDao;
 
 public class PaymentService {
-	private OrderDAO orderDao;
+	private OrderDao OrderDao;
 	public PaymentService() {
-		this.orderDao = orderDao;
+		this.OrderDao = OrderDao;
 		// this.orderService = new OrderService();
         // this.digitalKeyService = new DigitalKeyService();
 	}
@@ -34,4 +36,3 @@ public class PaymentService {
 	}
 	
 }
-
