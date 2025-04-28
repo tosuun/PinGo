@@ -10,7 +10,14 @@ public class Order {
     private LocalDateTime orderDate;
     private BigDecimal totalAmount;
     private String status;
-
+	public Order(int idProduct, int idCustomer, LocalDateTime orderDate, BigDecimal totalAmount,
+			String status) {
+		this.idProduct = idProduct;
+		this.idCustomer = idCustomer;
+		this.orderDate = orderDate;
+		this.totalAmount = totalAmount;
+		this.status = status;
+	}
     // --- Getters ve Setters ---
     public int getIdOrder() {
 		return idOrder;
