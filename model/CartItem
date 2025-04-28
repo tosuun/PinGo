@@ -7,6 +7,13 @@ public class CartItem {
 	private int idProduct;
 	private int quantity;
 	private LocalDateTime addedTimestamp;
+	public CartItem(int idCustomer, int idProduct, int quantity, LocalDateTime addedTimestamp) {
+		
+		this.idCustomer = idCustomer;
+		this.idProduct = idProduct;
+		this.quantity = quantity;
+		this.addedTimestamp = addedTimestamp;
+	}
 	public int getIdCartItem() {
 		return idCartItem;
 	}
