@@ -1,4 +1,4 @@
-package advertDB;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,12 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import util.DbHelper;
+
+import model.Advert;
 
 
-public class AdvertDAO {
+public class AdvertDao {
 	// This method saves a new advert object into the database and returns the generated Id.
 	public int save(Advert advert) {
         String sql = "INSERT INTO advert (product, seller, price, stock, isActive, createdAt, imageUrl) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -69,7 +72,7 @@ public class AdvertDAO {
 	                rs.getTimestamp("createdAt"),
 	                rs.getString("imageUrl")
 	            );
-	            adverts.add(advert);
+	            adverts.add(advert); //???
 	        }
 
 	    } catch (SQLException e) {
