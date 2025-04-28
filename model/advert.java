@@ -1,4 +1,5 @@
 package model;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
 	public class Advert {
 	    private int idAdvert;
 	    private String product;
-	    private String seller;
+	    private int idSeller;
 	    private BigDecimal price;
 	    private int stock;
 	    private boolean isActive;
@@ -19,10 +20,10 @@ import java.util.Date;
 	    }
 	    
 	    // parameterized constructor
-	    public Advert(int idAdvert, String product, String seller, BigDecimal price, int stock, boolean isActive, Date createdAt, String imageUrl) {
+	    public Advert(int idAdvert, String product, int seller, BigDecimal price, int stock, boolean isActive, Date createdAt, String imageUrl) {
 	        this.idAdvert = idAdvert;
 	        this.product = product;
-	        this.seller = seller;
+	        this.idSeller = seller;
 	        this.price = price;
 	        this.stock = stock;
 	        this.isActive = isActive;
@@ -47,15 +48,17 @@ import java.util.Date;
 	        this.product = product;
 	    }
 
-	    public String getSeller() {
-	        return seller;
-	    }
 
-	    public void setSeller(String seller) {
-	        this.seller = seller;
-	    }
 
-	    public BigDecimal getPrice() {
+	    public int getIdSeller() {
+			return idSeller;
+		}
+
+		public void setIdSeller(int idSeller) {
+			this.idSeller = idSeller;
+		}
+
+		public BigDecimal getPrice() {
 	        return price;
 	    }
 
@@ -101,7 +104,7 @@ import java.util.Date;
 	        return "Ilan{" +
 	                "idAdvert=" + idAdvert +
 	                ", product='" + product + '\'' +
-	                ", seller='" + seller + '\'' +
+	                ", seller='" + idSeller + '\'' +
 	                ", price=" + price +
 	                ", stock=" + stock +
 	                ", isActive=" + isActive +
@@ -110,6 +113,5 @@ import java.util.Date;
 	                '}';
 	    }
 	}
-
 
 
