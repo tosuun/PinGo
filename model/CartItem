@@ -1,28 +1,35 @@
+package model;
 import java.time.LocalDateTime;
 
 public class CartItem {
 	private int idCartItem;
-	private int customerId;
-	private int productId;
+	private int idCustomer;
+	private int idProduct;
 	private int quantity;
 	private LocalDateTime addedTimestamp;
 	public int getIdCartItem() {
 		return idCartItem;
 	}
+	@Override
+	public String toString() {
+		return "CartItem [idCartItem=" + idCartItem + ", idCustomer=" + idCustomer + ", idProduct=" + idProduct
+				+ ", quantity=" + quantity + ", addedTimestamp=" + addedTimestamp + "]";
+	}
 	public void setIdCartItem(int idCartItem) {
 		this.idCartItem = idCartItem;
 	}
-	public int getCustomerId() {
-		return customerId;
+	
+	public int getIdCustomer() {
+		return idCustomer;
 	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setIdCustomer(int idCustomer) {
+		this.idCustomer = idCustomer;
 	}
-	public int getProductId() {
-		return productId;
+	public int getIdProduct() {
+		return idProduct;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
 	}
 	public int getQuantity() {
 		return quantity;
