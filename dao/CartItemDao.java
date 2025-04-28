@@ -1,3 +1,5 @@
+package dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,11 +8,12 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
+import util.DbHelper;
 import model.*;
+
 public class CartItemDao {
 	public int save(CartItem cartItem) {
-		String sql = "INSERT INTO cartitem (idCartItem,customerId,productId,quantity,addedTimestamp) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO cart_item (idCartItem,customerId,productId,quantity,addedTimestamp) VALUES (?,?,?,?,?)";
 		int generatedId = 0;
 		try (Connection connection = DbHelper.getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
@@ -136,5 +139,9 @@ public class CartItemDao {
 	        // Doldurduğumuz CartItem nesnesini geri döndürüyoruz.
 	        return item;
 	    }
+	public boolean addCartItem(CartItem cartItem) {  //main yazarken ekledim
+		// TODO Auto-generated method stub
+		return false;
+	}
 	 
 }
