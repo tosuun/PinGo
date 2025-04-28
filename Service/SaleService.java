@@ -1,26 +1,28 @@
+package service;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.SalesDao;
-import model.Sales;
+import model.Sale;
+import dao.SaleDao;
 
-public class SalesService {
-	private SalesDao salesDao;
-	public SalesService() {
-		this.salesDao = new SalesDao();
+public class SaleService {
+	private SaleDao SaleDao;
+	public SaleService() {
+		this.SaleDao = new SaleDao();
 	}
-	public List<Sales> getSalesForOrder(int orderId) {
+	public List<Sale> getSalesForOrder(int orderId) {
 		try {
-			return salesDao.findByOrderId(orderId);
+			return SaleDao.findByOrderId(orderId);
 		} catch (Exception e) {
 			System.err.println("Order ID " + orderId + " için satışlar getirilirken hata: " + e.getMessage());
 			e.printStackTrace(); 
             return new ArrayList<>();
 		}
 	}
-	public Sales getSalesDetails(int idSales) {
+	public Sale getSalesDetails(int idSales) {
 		try {
-			return salesDao.findById(idSales);
+			return SaleDao.findById(idSales);
 		} catch (Exception e) {
 			System.err.println("Sales ID " + idSales + " için detaylar getirilirken hata: " + e.getMessage());
             e.printStackTrace();
@@ -28,9 +30,9 @@ public class SalesService {
 		}
 	}
 	//Belirli bir müşterinin tüm geçmiş satış kalemlerini getirir.
-	public List<Sales> getSalesForCustomer(int customerId) {
+	public List<Sale> getSalesForCustomer(int customerId) {
 		try {
-			return salesDao.findByOrderId(customerId);
+			return SaleDao.findByOrderId(customerId);
 		} catch (Exception e) {
 			 System.err.println("Customer ID " + customerId + " için satışlar getirilirken hata: " + e.getMessage());
              e.printStackTrace();
