@@ -1,20 +1,23 @@
-package services;
-import DAO.CartItemDao;
+package service;
+//yarın bakalıcak
+import dao.CartItemDao;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.AdvertDAO;
+import dao.AdvertDao;
 import model.CartItem;
 import model.Advert;
+
+
 public class ShoppingCartService {
 	private CartItemDao cartItemDao;
-	private AdvertDAO advertDAO;
+	private AdvertDao advertDAO;
 	public ShoppingCartService() {
         this.cartItemDao = new CartItemDao(); 
-        this.advertDAO = new AdvertDAO();   
+        this.advertDAO = new AdvertDao();   
     }
 	/**
      * Müşterinin sepetine ürün ekler.
