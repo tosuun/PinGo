@@ -1,6 +1,8 @@
+package model;
+
 //package sildim
 
-public class users {
+public class User {
 	    private int id;
 	    private String name;
 	    private String email;
@@ -13,12 +15,12 @@ public class users {
 	    private String tc;
 	    private double ciro;
 
-	  public users() {
+	  public User() {
 	    this.role = "buyer"; // varsayılan rol
 	}
 
 	    // Constructor
-	    public users(int id, String name, String email, String password, String role,
+	    public User(int id, String name, String email, String password, String role,
 	                 String telNo, int satisSayisi, String tc, double ciro) {
 	        this.id = id;
 	        this.name = name;
@@ -31,7 +33,7 @@ public class users {
 	        this.ciro = ciro;
 	    }
 	 //buyer için ayrı bir constructor
-	    public users(int id, String name, String email, String password, String role,
+	    public User(int id, String name, String email, String password, String role,
 	             String telNo, String tc) {
 	    this.id = id;
 	    this.name = name;
