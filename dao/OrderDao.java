@@ -1,33 +1,43 @@
-package Javaödev;
+package dao;
 
 import java.sql.*;
+import model.Order;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import util.DbHelper;
 
-public class OrderDAO {
+public class OrderDao {
 
     // Sipariş ekleme
-    public boolean addOrder(Order order) {
-        String sql = "INSERT INTO orders (product_id, customer_id, order_date, total_amount, status) VALUES (?, ?, ?, ?, ?)";
-
+    public int addOrder(Order order) {
+        String sql = "INSERT INTO `Order` (orderId,productId, customerId, orderDate, totalAmount, status) VALUES (?,?, ?, ?, ?, ?)";
+        int generatedId = 0;
         try (Connection conn = DbHelper.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, order.getProductId());
-            stmt.setInt(2, order.getCustomerId());
-            stmt.setTimestamp(3, Timestamp.valueOf(order.getOrderDate()));
-            stmt.setDouble(4, order.getTotalAmount());
-            stmt.setString(5, order.getStatus());
+             PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+        	stmt.setInt(1, order.getOrderId());
+            stmt.setInt(2, order.getProductId());
+            stmt.setInt(3, order.getCustomerId());
+            stmt.setTimestamp(4, Timestamp.valueOf(order.getOrderDate()));
+            stmt.setDouble(5, order.getTotalAmount());
+            stmt.setString(6, order.getStatus());
 
             int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
-
+            if (rowsAffected > 0) {
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        generatedId = generatedKeys.getInt(1);
+                        order.setOrderId(generatedId); 
+                    }
+                }
+            }
         } catch (SQLException e) {
             System.err.println("SQL Hatası: Order eklenemedi!");
             e.printStackTrace();
-            return false;
+           
         }
+        return generatedId;
     }
 
     // Sipariş ID'ye göre bulma
